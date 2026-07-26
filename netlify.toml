@@ -1,0 +1,14 @@
+# netlify.toml
+# Este ficheiro dita as regras de infraestrutura para o servidor do Netlify.
+
+[build]
+  # O comando exato que o servidor deve executar para compilar o site
+  command = "npm run build"
+  
+  # A pasta que será publicada. O Netlify deteta o Next.js e usa o .next implicitamente, 
+  # mas declará-lo previne conflitos de compilação.
+  publish = ".next"
+
+# Otimização de Cache para os pacotes instalados, melhorando o tempo de deploys futuros
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
