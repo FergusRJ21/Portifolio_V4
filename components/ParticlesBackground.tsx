@@ -18,17 +18,17 @@ export default function ParticlesBackground() {
     const particlesOptions: ISourceOptions = useMemo(
         () => ({
             background: { color: { value: "transparent" } },
-            fpsLimit: 120,
+            fpsLimit: 120, // Limite para desktops
             interactivity: {
                 events: {
-                    onHover: { enable: true, mode: "grab" }, // Cria conexões com o mouse
+                    onHover: { enable: true, mode: "grab" },
                 },
                 modes: {
                     grab: { distance: 180, links: { opacity: 0.8 } },
                 },
             },
             particles: {
-                color: { value: ["#00ffcc", "#ff0055"] }, // Cores Cyberpunk: Ciano e Rosa Néon
+                color: { value: ["#00ffcc", "#ff0055"] },
                 links: {
                     color: "#00ffcc",
                     distance: 140,
@@ -44,13 +44,29 @@ export default function ParticlesBackground() {
                 },
                 number: {
                     density: { enable: true },
-                    value: 70,
+                    value: 70, // Quantidade para desktop
                 },
                 opacity: { value: 0.6 },
                 shape: { type: "circle" },
                 size: { value: { min: 1, max: 3 } },
             },
             detectRetina: true,
+
+            // CONFIGURAÇÃO DE OTIMIZAÇÃO MOBILE (NOVO)
+            // Avalia a largura da tela em tempo real e sobrescreve as configurações acima
+            responsive: [
+                {
+                    maxWidth: 768, // Se a tela for menor ou igual a 768px (Smartphones)
+                    options: {
+                        particles: {
+                            number: {
+                                value: 25, // Reduz drasticamente as partículas para poupar GPU
+                            },
+                        },
+                        fpsLimit: 60, // Corta a taxa de atualização para poupar bateria
+                    },
+                },
+            ],
         }),
         [],
     );

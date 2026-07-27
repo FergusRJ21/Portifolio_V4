@@ -1,18 +1,23 @@
-/* A nova sintaxe de importação do Tailwind CSS v4 */
-@import "tailwindcss";
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Estilos gerais do corpo da página */
 body {
   background-color: #030308;
-  /* Preto cibernético azulado */
   color: #e2e8f0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   overflow-x: hidden;
+  /* Garante que o scroll no mobile seja suave (momentum scrolling) */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Previne o brilho azul/cinzento nativo dos navegadores mobile ao tocar no ecrã */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @layer utilities {
-
-  /* Efeito Scanlines: Linhas sutis horizontais de tela antiga/futurista */
   .cyber-scanlines {
     background: linear-gradient(rgba(18, 16, 16, 0) 50%,
         rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg,
@@ -22,7 +27,6 @@ body {
     background-size: 100% 4px, 6px 100%;
   }
 
-  /* Efeito de recorte geométrico Cyberpunk (cantos cortados em diagonal) */
   .cyber-tile {
     clip-path: polygon(0 0,
         calc(100% - 20px) 0,
