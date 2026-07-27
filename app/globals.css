@@ -1,8 +1,7 @@
-/* app/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 1. Importação moderna e nativa do Tailwind CSS versão 4 */
+@import "tailwindcss";
 
+/* 2. Estilos gerais do corpo da página */
 body {
   background-color: #030308;
   color: #e2e8f0;
@@ -12,21 +11,23 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Previne o brilho azul/cinzento nativo dos navegadores mobile ao tocar no ecrã */
+/* 3. Previne o brilho azul/cinzento nativo dos navegadores mobile ao tocar no ecrã */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* 4. Camada de utilitários personalizados integrados ao Tailwind */
 @layer utilities {
+
+  /* Efeito Scanlines: Linhas sutis horizontais de tela antiga/futurista */
   .cyber-scanlines {
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
-        rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg,
-        rgba(255, 0, 0, 0.03),
-        rgba(0, 255, 0, 0.01),
-        rgba(0, 0, 255, 0.03));
+    background:
+      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
     background-size: 100% 4px, 6px 100%;
   }
 
+  /* Efeito de recorte geométrico Cyberpunk (cantos cortados em diagonal) */
   .cyber-tile {
     clip-path: polygon(0 0,
         calc(100% - 20px) 0,
@@ -35,4 +36,5 @@ body {
         20px 100%,
         0 calc(100% - 20px));
   }
+
 }
